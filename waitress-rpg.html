@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -10,12 +11,10 @@
 <meta name="apple-mobile-web-app-title" content="Краб Режим">
 <meta name="theme-color" content="#0A0A0F">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0F'/><text y='.9em' font-size='80' x='10'>⚔️</text></svg>">
-<link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Краб Режим&quot;,&quot;short_name&quot;:&quot;Краб&quot;,&quot;description&quot;:&quot;Фарм монет. Режим выживания.&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;%230A0A0F&quot;,&quot;theme_color&quot;:&quot;%230A0A0F&quot;,&quot;orientation&quot;:&quot;portrait&quot;}">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap');
 :root{
-  --gold:#FFD700;--gold2:#B8860B;--silver:#C0C0C0;--silver2:#64748B;
+  --gold:#FFD700;--gold2:#B8860B;--silver:#C0C0C0;
   --purple:#8B5CF6;--green:#10B981;--red:#EF4444;
   --bg:#0A0A0F;--s1:#13131A;--s2:#1C1C2E;--text:#E2E8F0;--dim:#64748B;
 }
@@ -23,100 +22,57 @@
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;
   background-image:radial-gradient(ellipse at 15% 50%,rgba(139,92,246,0.07) 0%,transparent 55%),
   radial-gradient(ellipse at 85% 10%,rgba(255,215,0,0.05) 0%,transparent 50%);}
-
-/* HEADER */
-.hdr{text-align:center;padding:18px 16px 10px;border-bottom:1px solid rgba(255,215,0,0.12);}
-.hdr h1{font-family:'Press Start 2P',monospace;font-size:11px;color:var(--gold);
-  text-shadow:0 0 24px rgba(255,215,0,0.6);letter-spacing:2px;}
-.hdr p{font-size:10px;color:var(--dim);margin-top:4px;letter-spacing:3px;text-transform:uppercase;}
-
-/* TABS */
+.hdr{text-align:center;padding:16px 16px 8px;border-bottom:1px solid rgba(255,215,0,0.12);}
+.hdr h1{font-family:'Press Start 2P',monospace;font-size:11px;color:var(--gold);text-shadow:0 0 24px rgba(255,215,0,0.6);letter-spacing:2px;}
+.hdr p{font-size:10px;color:var(--dim);margin-top:3px;letter-spacing:3px;text-transform:uppercase;}
+.hdr .dev{font-size:9px;color:rgba(139,92,246,0.6);margin-top:4px;letter-spacing:1px;}
 .tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.07);}
-.tab{flex:1;padding:11px 4px;text-align:center;cursor:pointer;font-size:10px;font-weight:700;
-  letter-spacing:1px;color:var(--dim);border-bottom:2px solid transparent;transition:.2s;text-transform:uppercase;}
+.tab{flex:1;padding:11px 4px;text-align:center;cursor:pointer;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--dim);border-bottom:2px solid transparent;transition:.2s;text-transform:uppercase;}
 .tab.on{color:var(--gold);border-bottom-color:var(--gold);}
-.tc{display:none;padding-bottom:32px;}
+.tc{display:none;padding-bottom:40px;}
 .tc.on{display:block;}
-
-/* UTILITY */
 .sec{font-size:10px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;padding:0 16px;margin:14px 0 8px;}
 .card{background:var(--s1);border-radius:12px;padding:14px;margin:0 16px 12px;position:relative;overflow:hidden;}
 .card.g{border:1px solid rgba(255,215,0,0.22);}
-.card.g::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.card.g::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .card.sv{border:1px solid rgba(192,192,192,0.25);}
-.card.sv::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--silver),transparent);}
+.card.sv::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--silver),transparent);}
 .card.pu{border:1px solid rgba(139,92,246,0.3);}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px 12px;}
 .mc{background:var(--s1);border-radius:10px;padding:12px;text-align:center;}
 .mc.g{border:1px solid rgba(255,215,0,0.28);}
 .mc.sv{border:1px solid rgba(192,192,192,0.28);}
-.bigN{font-size:26px;font-weight:700;line-height:1.1;}
 .lbl{font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
 .bar{height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin:7px 0;}
 .bf{height:100%;border-radius:4px;transition:width .5s;}
 .bfg{background:linear-gradient(90deg,var(--gold2),var(--gold));}
 .bfs{background:linear-gradient(90deg,#475569,var(--silver));}
+.bfp{background:linear-gradient(90deg,#4C1D95,var(--purple));}
 .row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--dim);}
-
-/* INPUTS */
-.inp{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,0.1);border-radius:8px;
-  padding:9px 12px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:600;outline:none;margin-bottom:5px;}
+.inp{width:100%;background:var(--bg);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:600;outline:none;margin-bottom:5px;}
 .inp:focus{border-color:var(--gold);}
 .inp.sv:focus{border-color:var(--silver);}
-.btn{width:100%;border:none;border-radius:8px;padding:10px;font-family:'Rajdhani',sans-serif;
-  font-weight:700;font-size:14px;cursor:pointer;transition:.2s;letter-spacing:1px;}
+.inp.sm{font-size:14px;padding:7px 10px;margin:0;}
+.btn{width:100%;border:none;border-radius:8px;padding:10px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;letter-spacing:1px;}
 .btn:active{transform:scale(.96);}
 .btng{background:var(--gold);color:var(--bg);}
 .btns{background:var(--silver);color:var(--bg);}
-.btnE{display:block;width:calc(100% - 32px);margin:4px 16px 10px;border:none;border-radius:10px;
-  padding:14px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;
-  letter-spacing:2px;cursor:pointer;background:linear-gradient(135deg,#4C1D95,var(--purple));color:white;}
-.btnR{display:block;width:calc(100% - 32px);margin:0 16px 16px;background:transparent;
-  border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:11px;
-  color:rgba(239,68,68,0.55);font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:2px;cursor:pointer;}
-
-/* BONUS GRID */
-.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 16px 12px;}
-.bb{background:var(--s1);border:1px solid rgba(255,255,255,0.07);border-radius:10px;
-  padding:9px 6px;text-align:center;cursor:pointer;transition:.2s;}
-.bb:active{transform:scale(.95);}
-.bi{font-size:17px;display:block;margin-bottom:3px;}
-.bl{font-size:10px;color:var(--dim);display:block;}
-.bv{font-size:11px;font-weight:700;color:var(--green);display:block;}
-
-/* LEVEL ITEMS */
-.li{display:flex;align-items:center;gap:10px;padding:10px 13px;background:var(--s1);
-  border-radius:8px;margin-bottom:6px;border:1px solid rgba(255,255,255,0.04);transition:.3s;}
+.btnSm{border:none;border-radius:6px;padding:6px 12px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:.2s;background:var(--purple);color:white;}
+.btnE{display:block;width:calc(100% - 32px);margin:4px 16px 10px;border:none;border-radius:10px;padding:14px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:2px;cursor:pointer;background:linear-gradient(135deg,#4C1D95,var(--purple));color:white;}
+.btnR{display:block;width:calc(100% - 32px);margin:0 16px 16px;background:transparent;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:11px;color:rgba(239,68,68,0.55);font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;}
+.li{display:flex;align-items:center;gap:10px;padding:10px 13px;background:var(--s1);border-radius:8px;margin-bottom:6px;border:1px solid rgba(255,255,255,0.04);transition:.3s;}
 .li.cur{background:rgba(255,215,0,0.06);border-color:rgba(255,215,0,0.35);}
 .li.done{border-color:rgba(16,185,129,0.28);opacity:.75;}
-.li.locked{opacity:.5;}
-
-/* LOG */
 .logW{max-height:150px;overflow-y:auto;margin:0 16px 12px;}
-.logI{display:flex;justify-content:space-between;padding:7px 10px;background:var(--s1);
-  border-radius:6px;margin-bottom:3px;font-size:12px;animation:si .3s ease;}
+.logI{display:flex;justify-content:space-between;padding:7px 10px;background:var(--s1);border-radius:6px;margin-bottom:3px;font-size:12px;animation:si .3s ease;}
 @keyframes si{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
-
-/* BANNER */
 .banner{margin:0 16px 12px;border-radius:12px;padding:14px;text-align:center;display:none;}
 .banner.on{display:block;}
-.bannerG{background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(139,92,246,0.1));
-  border:1px solid rgba(255,215,0,0.4);}
-
-/* HISTORY */
-.hi{background:var(--s1);border-radius:10px;padding:13px;margin:0 16px 8px;
-  border:1px solid rgba(255,255,255,0.04);}
-
-/* TOAST */
-.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-110px);
-  background:var(--s2);border:1px solid var(--gold);border-radius:10px;padding:11px 20px;
-  font-size:10px;font-weight:700;color:var(--gold);z-index:999;transition:transform .3s;
-  white-space:nowrap;font-family:'Press Start 2P',monospace;}
+.bannerG{background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(139,92,246,0.1));border:1px solid rgba(255,215,0,0.4);}
+.hi{background:var(--s1);border-radius:10px;padding:13px;margin:0 16px 8px;border:1px solid rgba(255,255,255,0.04);}
+.toast{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-110px);background:var(--s2);border:1px solid var(--gold);border-radius:10px;padding:11px 20px;font-size:10px;font-weight:700;color:var(--gold);z-index:999;transition:transform .3s;white-space:nowrap;font-family:'Press Start 2P',monospace;}
 .toast.on{transform:translateX(-50%) translateY(0);}
-
+.shift-editor{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:8px;padding:10px 12px;margin-top:10px;}
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px;}
 </style>
@@ -126,6 +82,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
 <div class="hdr">
   <h1>⚔️ КРАБ РЕЖИМ</h1>
   <p>Фарм монет · Режим выживания</p>
+  <div class="dev">⚔️ Разработано: Полина & Клоди ⚔️</div>
 </div>
 
 <div class="tabs">
@@ -135,9 +92,9 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
 </div>
 
 <!-- ══════════ ДЕНЬ ══════════ -->
+
 <div class="tc on" id="tc-day">
 
-  <!-- ЗЛАТО -->
   <div class="sec">🪙 ЗЛАТО — ДНЕВНОЙ ФАРМ</div>
   <div class="card g">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
@@ -157,7 +114,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
     </div>
   </div>
 
-  <!-- СЕРЕБРО МЕШОК -->
   <div class="sec">🥈 СЕРЕБРО — МЕШОК ЗА ДЕНЬ</div>
   <div class="card sv">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
@@ -174,13 +130,12 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
       </div>
       <div style="font-size:24px">→</div>
       <div style="text-align:center;">
-        <div style="font-size:14px;color:var(--dim)">закроешь день</div>
-        <div style="font-size:14px;font-weight:700;color:var(--green)">→ В БАНК + 150 🎁</div>
+        <div style="font-size:13px;color:var(--dim)">закроешь день</div>
+        <div style="font-size:13px;font-weight:700;color:var(--green)">→ В БАНК + 150 🎁</div>
       </div>
     </div>
   </div>
 
-  <!-- ДОБАВИТЬ -->
   <div class="sec">⚔️ ДОБАВИТЬ</div>
   <div class="g2">
     <div class="mc g">
@@ -197,47 +152,32 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
     </div>
   </div>
 
-  <!-- БОНУСЫ -->
-  <div class="sec">✨ БОНУСЫ (ЗЛАТО)</div>
-  <div class="bgrid">
-    <div class="bb" onclick="addG(50,'😊 Добрый моб')"><span class="bi">😊</span><span class="bl">ДОБРЫЙ МОБ</span><span class="bv">+50 🪙</span></div>
-    <div class="bb" onclick="addG(100,'🔥 Крупный стол')"><span class="bi">🔥</span><span class="bl">КРУПНЫЙ СТОЛ</span><span class="bv">+100 🪙</span></div>
-    <div class="bb" onclick="addG(200,'👑 VIP моб')"><span class="bi">👑</span><span class="bl">VIP МОБ</span><span class="bv">+200 🪙</span></div>
-    <div class="bb" onclick="addG(30,'⚡ Быстрый фарм')"><span class="bi">⚡</span><span class="bl">БЫСТРЫЙ ФАРМ</span><span class="bv">+30 🪙</span></div>
-    <div class="bb" onclick="addG(75,'🍾 ДР моба')"><span class="bi">🍾</span><span class="bl">ДР МОБА</span><span class="bv">+75 🪙</span></div>
-    <div class="bb" onclick="addG(150,'💎 Топ смена')"><span class="bi">💎</span><span class="bl">ТОП ДЕНЬ</span><span class="bv">+150 🪙</span></div>
-  </div>
-
-  <!-- ЛОГ -->
   <div class="sec">📜 ЛОГ ДНЯ</div>
   <div class="logW" id="logD">
     <div style="text-align:center;padding:18px;color:var(--dim);font-size:12px">Начни фармить! ⚔️</div>
   </div>
 
-  <button class="btnE" onclick="closeDay()">🌙 ЗАКРЫТЬ ДЕНЬ → СЕРЕБРО В БАНК</button>
-  <button class="btnR" onclick="resetDay()">✕ СБРОСИТЬ ДЕНЬ</button>
+<button class="btnE" onclick="closeDay()">🌙 ЗАКРЫТЬ ДЕНЬ → СЕРЕБРО В БАНК</button>
+<button class="btnR" onclick="resetDay()">✕ СБРОСИТЬ ДЕНЬ</button>
+
 </div>
 
 <!-- ══════════ БАНК ══════════ -->
-<div class="tc" id="tc-bank">
 
+<div class="tc" id="tc-bank">
   <div style="height:14px"></div>
 
-  <!-- БАНК ГЛАВНЫЙ -->
   <div class="card sv">
     <div style="font-size:10px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">🏦 БАНК СЕРЕБРА</div>
     <div style="display:flex;align-items:flex-end;gap:8px;margin-bottom:4px;">
       <div style="font-size:38px;font-weight:700;color:var(--silver)" id="bankTotal">0</div>
       <div style="font-size:14px;color:var(--dim);padding-bottom:6px">серебра</div>
     </div>
-
-    <!-- УРОВНИ БАНКА -->
     <div style="margin:12px 0 6px;">
-      <div class="row" style="margin-bottom:5px;"><span>Крабовый минимум</span><span style="color:var(--silver)">10 000</span></div>
+      <div class="row" style="margin-bottom:5px;"><span>Прогресс к цели</span><span id="bLvlAmt" style="color:var(--silver)"></span></div>
       <div class="bar"><div id="bBar1" class="bf bfs" style="width:0%"></div></div>
-      <div class="row" style="margin-top:4px;"><span id="bLvlName" style="color:var(--silver);font-weight:700;font-size:13px">Стартер 🦀</span><span id="bLvlAmt" style="color:var(--dim)"></span></div>
+      <div class="row" style="margin-top:4px;"><span id="bLvlName" style="color:var(--silver);font-weight:700;font-size:13px">Стартер 🦀</span></div>
     </div>
-
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">
       <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;border:1px solid rgba(192,192,192,0.15)">
         <div style="font-size:18px;font-weight:700;color:var(--silver)" id="bDays">0</div>
@@ -252,30 +192,55 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
         <div class="lbl">Нужно/день</div>
       </div>
     </div>
+    <!-- РУЧНОЕ РЕДАКТИРОВАНИЕ СМЕН -->
+    <div class="shift-editor">
+      <div style="font-size:12px;color:var(--dim);flex:1">✏️ Поправить смены:</div>
+      <input class="inp sm" type="number" id="shiftEdit" style="width:60px;text-align:center;" inputmode="numeric">
+      <button class="btnSm" onclick="saveShifts()">OK</button>
+    </div>
   </div>
 
-  <!-- ЦЕЛИ МЕСЯЦА -->
+  <!-- ЗЛАТО ЗА МЕСЯЦ -->
+
+  <div class="card g">
+    <div style="font-size:10px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">🪙 ЗЛАТО ЗА МЕСЯЦ</div>
+    <div style="display:flex;align-items:flex-end;gap:8px;margin-bottom:8px;">
+      <div style="font-size:32px;font-weight:700;color:var(--gold)" id="monthGold">0</div>
+      <div style="font-size:13px;color:var(--dim);padding-bottom:4px">всего злата</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:16px;font-weight:700;color:var(--gold)" id="monthAvgGold">0</div>
+        <div class="lbl">Средняя/смена</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:16px;font-weight:700;color:var(--gold)" id="monthBestGold">0</div>
+        <div class="lbl">Лучший день</div>
+      </div>
+    </div>
+  </div>
+
   <div class="sec">🎯 ЦЕЛИ МЕСЯЦА</div>
   <div id="monthGoals" style="margin:0 16px 12px;"></div>
 
-  <!-- СЧЁТЧИК СЧЕТОВ -->
-  <div class="sec">🧮 НУЖНО ЗАКРЫТЬ СЧЕТОВ</div>
+  <div class="sec">🧮 НУЖНО СЧЕТОВ В ДЕНЬ</div>
   <div class="card pu">
     <div style="font-size:11px;color:var(--dim);margin-bottom:10px;">Сколько нужно закрыть счетов в день для каждой цели:</div>
     <div style="display:flex;flex-direction:column;gap:8px;" id="billCalc"></div>
   </div>
 
-  <!-- БАННЕР -->
   <div class="banner bannerG" id="bonBanner">
     <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--gold);margin-bottom:6px">🎉 КРАБОВЫЙ МАКСИМУМ!</div>
-    <div style="font-size:12px;color:var(--dim);margin-bottom:4px">Ты за пределами базы! Чистый профит сверху 💎</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:4px">Ты за пределами базы! Чистый профит 💎</div>
     <div style="font-size:26px;font-weight:700;color:var(--purple)" id="bonAmt">+0</div>
   </div>
 
-  <button class="btnR" onclick="resetBank()" style="margin-top:8px">⚠ СБРОСИТЬ БАНК (НОВЫЙ МЕСЯЦ)</button>
+<button class="btnR" onclick="resetBank()" style="margin-top:8px">⚠ СБРОСИТЬ БАНК (НОВЫЙ МЕСЯЦ)</button>
+
 </div>
 
 <!-- ══════════ ИСТОРИЯ ══════════ -->
+
 <div class="tc" id="tc-hist">
   <div style="height:14px"></div>
   <div class="sec">📜 ЗАКРЫТЫЕ ДНИ</div>
@@ -285,10 +250,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;mi
 </div>
 
 <div class="toast" id="toast"></div>
-<button id="installBtn" onclick="installPWA()" style="display:none;position:fixed;bottom:20px;right:16px;background:var(--gold);color:var(--bg);border:none;border-radius:12px;padding:12px 18px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;cursor:pointer;z-index:999;box-shadow:0 4px 20px rgba(255,215,0,0.3);">📲 Установить приложение</button>
 
 <script>
-// ── CONSTANTS ──
 const GOLD_LVL = [
   {n:'КРАБ НУБ',req:0,icon:'🦀',color:'#64748B'},
   {n:'КРАБ КРАСАВЧИК',req:500,icon:'⚔️',color:'#10B981'},
@@ -297,45 +260,41 @@ const GOLD_LVL = [
   {n:'КРАБ БОГ 🔥',req:2000,icon:'💎',color:'#EF4444'},
 ];
 const BANK_LVL = [
-  {n:'Стартер 🦀',req:0,next:10000,color:'#64748B'},
-  {n:'Крабовый минимум ✅',req:10000,next:13000,color:'#10B981'},
-  {n:'Крабовый среднячок 💪',req:13000,next:15000,color:'#8B5CF6'},
-  {n:'Раскошный максимум 👑',req:15000,next:15000,color:'#FFD700'},
+  {n:'Стартер 🦀',req:0,color:'#64748B'},
+  {n:'Крабовый минимум ✅',req:10000,color:'#10B981'},
+  {n:'Крабовый среднячок 💪',req:13000,color:'#8B5CF6'},
+  {n:'Раскошный максимум 👑',req:15000,color:'#FFD700'},
 ];
 const GOALS = [
-  {n:'Крабовый минимум',silver:10000,bills:285000,perDay:16800,color:'#C0C0C0'},
-  {n:'Крабовый среднячок',silver:13000,bills:371000,perDay:21800,color:'#8B5CF6'},
-  {n:'Раскошный максимум',silver:15000,bills:428000,perDay:25200,color:'#FFD700'},
+  {n:'Крабовый минимум',silver:10000,perDay:16800,color:'#C0C0C0'},
+  {n:'Крабовый среднячок',silver:13000,perDay:21800,color:'#8B5CF6'},
+  {n:'Раскошный максимум',silver:15000,perDay:25200,color:'#FFD700'},
 ];
 const BONUS_PER_DAY = 150;
 const SHIFTS = 17;
 
-// ── STATE ──
-let day  = JSON.parse(localStorage.getItem('crab_day')  || '{"gold":0,"bag":0,"bills":0,"log":[]}');
-let bank = JSON.parse(localStorage.getItem('crab_bank') || '{"silver":0,"days":0,"history":[]}');
+let day  = JSON.parse(localStorage.getItem('crab_day3')  || '{"gold":0,"bag":0,"bills":0,"log":[]}');
+let bank = JSON.parse(localStorage.getItem('crab_bank3') || '{"silver":0,"days":0,"totalGold":0,"bestGold":0,"history":[]}');
 
 function save(){
-  localStorage.setItem('crab_day',  JSON.stringify(day));
-  localStorage.setItem('crab_bank', JSON.stringify(bank));
+  localStorage.setItem('crab_day3',  JSON.stringify(day));
+  localStorage.setItem('crab_bank3', JSON.stringify(bank));
 }
 
-// ── TABS ──
 function sw(name){
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',['day','bank','hist'][i]===name));
   document.querySelectorAll('.tc').forEach(c=>c.classList.remove('on'));
   document.getElementById('tc-'+name).classList.add('on');
-  if(name==='bank') updBank();
+  if(name==='bank'){updBank();document.getElementById('shiftEdit').value=bank.days||0;}
   if(name==='hist') updHist();
 }
 
-// ── TOAST ──
 function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('on');
   setTimeout(()=>t.classList.remove('on'),2300);
 }
 
-// ── GOLD ──
 function getGoldLvl(g){let l=GOLD_LVL[0];for(let x of GOLD_LVL)if(g>=x.req)l=x;return l;}
 
 function addGold(){
@@ -346,9 +305,7 @@ function addGold(){
   document.getElementById('gPrev').textContent='';
   save(); toast(`+${v} 🪙 ЗЛАТО`); updDay();
 }
-function addG(a,d){day.gold+=a;day.log.push({d,a,t:'g'});save();toast(`БОНУС +${a} 🪙`);updDay();}
 
-// ── SILVER ──
 function addBill(){
   const v=parseInt(document.getElementById('sIn').value)||0;
   if(v<=0)return;
@@ -360,7 +317,6 @@ function addBill(){
   save(); toast(`+${s} 🥈 В МЕШОК`); updDay();
 }
 
-// ── CLOSE DAY ──
 function closeDay(){
   if(day.gold===0&&day.bag===0){toast('⚠ ДЕНЬ ПУСТОЙ!');return;}
   const silverEarned = day.bag + BONUS_PER_DAY;
@@ -377,12 +333,19 @@ function closeDay(){
   };
   bank.silver += silverEarned;
   bank.days += 1;
+  bank.totalGold = (bank.totalGold||0) + day.gold;
+  bank.bestGold = Math.max(bank.bestGold||0, day.gold);
   bank.history.push(entry);
-  // Reset day
   day = {gold:0,bag:0,bills:0,log:[]};
   save();
   toast(`🌙 ДЕНЬ ЗАКРЫТ! +${silverEarned} 🥈 В БАНК`);
   updDay(); updBank();
+}
+
+function saveShifts(){
+  const v = parseInt(document.getElementById('shiftEdit').value)||0;
+  bank.days = v;
+  save(); updBank(); toast(`✅ СМЕН: ${v}`);
 }
 
 function resetDay(){
@@ -391,16 +354,15 @@ function resetDay(){
     save(); updDay();
   }
 }
+
 function resetBank(){
   if(confirm('Сбросить банк? Начнётся новый месяц!')){
-    bank={silver:0,days:0,history:[]};
+    bank={silver:0,days:0,totalGold:0,bestGold:0,history:[]};
     save(); updBank(); toast('🔄 НОВЫЙ МЕСЯЦ!');
   }
 }
 
-// ── UPDATE DAY UI ──
 function updDay(){
-  // Gold level
   const gl = getGoldLvl(day.gold);
   const gi = GOLD_LVL.indexOf(gl);
   document.getElementById('gIcon').textContent = gl.icon;
@@ -416,10 +378,8 @@ function updDay(){
     document.getElementById('gBar').style.width='100%';
     document.getElementById('gNext').textContent='💎 МАХ!';
   }
-  // Silver bag
   document.getElementById('bagSilver').textContent = day.bag;
   document.getElementById('billsSum').textContent  = day.bills;
-  // Log
   const ll = document.getElementById('logD');
   if(!day.log.length){
     ll.innerHTML='<div style="text-align:center;padding:18px;color:var(--dim);font-size:12px">Начни фармить! ⚔️</div>';
@@ -433,23 +393,28 @@ function updDay(){
   }
 }
 
-// ── UPDATE BANK UI ──
 function updBank(){
   const s = bank.silver;
   document.getElementById('bankTotal').textContent = s;
-  document.getElementById('bDays').textContent    = bank.days;
+  document.getElementById('bDays').textContent = bank.days;
   const avg = bank.days>0?Math.round(s/bank.days):0;
   document.getElementById('bAvg').textContent = avg;
   const dLeft = Math.max(1, SHIFTS - bank.days);
-  // Find bank level
+
+  // Gold stats
+  document.getElementById('monthGold').textContent = bank.totalGold||0;
+  const avgGold = bank.days>0?Math.round((bank.totalGold||0)/bank.days):0;
+  document.getElementById('monthAvgGold').textContent = avgGold;
+  document.getElementById('monthBestGold').textContent = bank.bestGold||0;
+
   let bl = BANK_LVL[0];
   for(let x of BANK_LVL) if(s>=x.req) bl=x;
   document.getElementById('bLvlName').textContent = bl.n;
   document.getElementById('bLvlName').style.color = bl.color;
-  // Progress to 15000
+
   const prog = Math.min(100,(s/15000)*100);
   document.getElementById('bBar1').style.width = prog+'%';
-  // Next target
+
   const nextGoal = GOALS.find(g=>s<g.silver);
   if(nextGoal){
     document.getElementById('bLvlAmt').textContent = `${s} / ${nextGoal.silver}`;
@@ -459,34 +424,33 @@ function updBank(){
     document.getElementById('bLvlAmt').textContent = `${s} / 15000+`;
     document.getElementById('bNeed').textContent = '✅';
   }
-  // Goals
+
   const gc = document.getElementById('monthGoals');
   gc.innerHTML = GOALS.map(g=>{
     const done = s>=g.silver;
     const cur  = !done && s>=(GOALS[GOALS.indexOf(g)-1]?.silver||0);
-    return`<div class="li ${done?'done':cur?'cur':'locked'}">
+    return`<div class="li ${done?'done':cur?'cur':''}">
       <div style="font-size:20px">${done?'✅':cur?'▶️':'🔒'}</div>
       <div style="flex:1">
         <div style="font-size:13px;font-weight:700;color:${cur?g.color:'inherit'}">${g.n}</div>
         <div style="font-size:11px;color:var(--dim)">${g.silver.toLocaleString()} серебра</div>
       </div>
-      <div style="font-size:14px;font-weight:700;color:${g.color}">${s>=g.silver?s-g.silver+' лишних':'ещё '+(g.silver-s)}</div>
+      <div style="font-size:13px;font-weight:700;color:${g.color}">${s>=g.silver?'+'+(s-g.silver)+' лишних':'ещё '+(g.silver-s)}</div>
     </div>`;
   }).join('');
-  // Bill calc
+
   const bc = document.getElementById('billCalc');
   bc.innerHTML = GOALS.map(g=>`
     <div style="display:flex;justify-content:space-between;padding:8px 10px;background:var(--bg);border-radius:8px;">
       <div style="font-size:12px;color:var(--dim)">${g.n}</div>
       <div style="font-size:13px;font-weight:700;color:${g.color}">${g.perDay.toLocaleString()} лей/день</div>
     </div>`).join('');
-  // Bonus banner
+
   const bb = document.getElementById('bonBanner');
   if(s>=15000){bb.classList.add('on');document.getElementById('bonAmt').textContent=`+${s-15000} серебра бонус`;}
   else{bb.classList.remove('on');}
 }
 
-// ── UPDATE HISTORY ──
 function updHist(){
   const c = document.getElementById('histList');
   if(!bank.history?.length){
@@ -500,51 +464,33 @@ function updHist(){
         <div style="font-size:12px;font-weight:700;color:var(--gold)">${h.goldLevel}</div>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <div style="font-size:13px;font-weight:700;color:var(--gold)">🪙 ${h.gold} злато</div>
-        <div style="font-size:13px;font-weight:700;color:var(--silver)">🥈 ${h.bag} мешок</div>
-        <div style="font-size:13px;font-weight:700;color:var(--green)">🎁 +${h.bonus} бонус</div>
+        <div style="font-size:13px;font-weight:700;color:var(--gold)">🪙 ${h.gold}</div>
+        <div style="font-size:13px;font-weight:700;color:var(--silver)">🥈 ${h.bag}</div>
+        <div style="font-size:13px;font-weight:700;color:var(--green)">🎁 +${h.bonus}</div>
         <div style="font-size:13px;font-weight:700;color:#A78BFA">= ${h.silverTotal} в банк</div>
       </div>
-      <div style="font-size:11px;color:var(--dim);margin-top:5px;">Счетов закрыто: ${h.bills.toLocaleString()} лей</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:5px;">Счетов: ${h.bills.toLocaleString()} лей</div>
     </div>`
   ).join('');
 }
 
-// ── LIVE PREVIEWS ──
 document.getElementById('gIn').addEventListener('input',function(){
   const v=parseInt(this.value)||0;
-  document.getElementById('gPrev').textContent=v>0?`+${v} злото`:'';
+  document.getElementById('gPrev').textContent=v>0?`+${v} злато`:'';
 });
 document.getElementById('sIn').addEventListener('input',function(){
   const v=parseInt(this.value)||0;
   document.getElementById('sPrev').textContent=v>0?`→ +${Math.round(v*0.035)} серебра`:'';
 });
 
-// ── INIT ──
 updDay();
 
-// ── PWA SERVICE WORKER ──
 if('serviceWorker' in navigator){
-  const sw = `
-    const CACHE='crab-v1';
-    self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['.']))));
-    self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
-  `;
+  const sw = `const CACHE='crab-v3';self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['.']))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));`;
   const blob = new Blob([sw],{type:'application/javascript'});
-  const url  = URL.createObjectURL(blob);
-  navigator.serviceWorker.register(url).catch(()=>{});
-}
-
-// ── INSTALL BANNER (Android) ──
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault(); deferredPrompt=e;
-  const btn=document.getElementById('installBtn');
-  if(btn) btn.style.display='block';
-});
-function installPWA(){
-  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null;}
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
 }
 </script>
+
 </body>
 </html>
